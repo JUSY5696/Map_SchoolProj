@@ -22,22 +22,20 @@ st.code("* \n** \n*** \n**** \n*****")
 
 #read data(CSV)
 df = pd.read_csv('인천광역시 남동구_고등학교_20240325.csv', encoding='cp949')
-df_latlon = df[['위도', '경도']]
-df_latlon = df_latlon.rename(columns={'위도' : 'lat', '경도' : "lon"})
 #st.map(df_latlon)
 
 #Maps with Marker(Map Visualization Step)
 m = folium.Map(
-    location=[37.40583317, 126.7214872],
-    zoom_start=12
+    locatio n= [37.40583317, 126.7214872],
+    zoom_start = 12
   )
-
-folium.Marker(
-    location = [37.40583317, 126.7214872],
-    tooltip = "Click Here",
-    popup = "NDHS",
-    icon = folium.Icon(color='blue', icon='info-sign')
-).add_to(m)
+for i in range(len(df)) :
+    homepage = f'{df.iloc[i]['홈페이지']}'
+    folium.Marker(
+        location = [df.iloc[i]['위도'], df.iloc[i]['경도']],
+        popup = f'<div style="width:200px"> <strong>{df.iloc[i]['학교명']}</strong> <br> Homepage : <a href="{homepage}">{homepage}</a> <br> Phone : {school.iloc[i]['연락처']}</div>',
+        icon = folium.Icon(color='blue', icon='info-sign')
+    ).add_to(m)
 
 #output
 st_folium(m, width=1000, height=500)
