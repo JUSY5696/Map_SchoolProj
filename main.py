@@ -33,9 +33,10 @@ m = folium.Map(
   )
 
 folium.Marker(
-  location = [37.40583317, 126.7214872],
-  tooltip = "Click Here",
-  popup = "NDHS"
+    location = [37.40583317, 126.7214872],
+    tooltip = "Click Here",
+    popup = "NDHS",
+    icon = folium.Icon(color='blue', icon='info-sign')
 ).add_to(m)
 
 #output
