@@ -5,5 +5,5 @@ import pandas as pd
 
 st.set_page_config(page_title="NDHS Maps")
 for i in range(10) :
-  print('*' * (i+1))
+  st.text('*' * (i+1))
 st.header("NDHS Maps")
