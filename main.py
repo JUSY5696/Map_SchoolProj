@@ -33,7 +33,7 @@ for i in range(len(df)) :
     homepage = f'{df.iloc[i]['홈페이지']}'
     folium.Marker(
         location = [df.iloc[i]['위도'], df.iloc[i]['경도']],
-        popup = f'<div style="width:200px"> <strong>{df.iloc[i]['학교명']}</strong> <br> Homepage : <a href="{homepage}">{homepage}</a> <br> Phone : {df.iloc[i]['연락처']}</div>',
+        popup = f'<div style="width:200px"> <strong>{df.iloc[i]['학교명']}</strong> <br> HP : <a href="{homepage}">{homepage}</a> <br> TEL : {df.iloc[i]['연락처']}</div>',
         icon = folium.Icon(color='blue', icon='info-sign')
     ).add_to(m)
 
