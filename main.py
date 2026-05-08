@@ -12,5 +12,5 @@ st.markdown("Choose the course from the left menu tab and join our event.")
 
 st.markdown("#big title")
 st.markdown("##small title")
-st.markdown(""**Bold**")
+st.markdown("**Bold**")
 st.markdown("*Italic*")
