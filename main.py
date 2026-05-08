@@ -16,8 +16,8 @@ st.markdown("*Italic*")
 st.header("Header")
 st.subheader("Subheader")
 st.caption("Caption")
-st.code("for i in range(5) : \n print('*' * (i + 1))")
+st.code("for i in range(5) : \n  print('*' * (i + 1))")
 
-df = pd.pd.read_csv('인천광역시 남동구_고등학교_20240325.csv', encoding='cp949')
+df = pd.read_csv('인천광역시 남동구_고등학교_20240325.csv', encoding='cp949')
 df_latlon = df[['위도'],['경도']]
 
