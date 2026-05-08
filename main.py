@@ -3,7 +3,7 @@ import folium
 from streamlit_folium import st_folium
 import pandas as pd
 
-st.set_page_config(page_title="NDHS Maps")
-for i in range(10) :
-  st.text('*' * (i+1))
-st.header("NDHS Maps")
+st.set_page_config(page_title="NDHS Maps", layout="wide")
+
+st.title("NDHS Maps")
+st.header("2026 NDHS Hiking Event Guide Map")
