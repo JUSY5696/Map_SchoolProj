@@ -26,7 +26,7 @@ df = pd.read_csv('인천광역시 남동구_고등학교_20240325.csv', encoding
 
 #Maps with Marker(Map Visualization Step)
 m = folium.Map(
-    locatio n= [37.40583317, 126.7214872],
+    location = [37.40583317, 126.7214872],
     zoom_start = 12
   )
 for i in range(len(df)) :
