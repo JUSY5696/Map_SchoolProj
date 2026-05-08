@@ -37,3 +37,6 @@ folium.Marker(
   tooltip = "Click Here",
   popup = "NDHS"
 ).add_to(m)
+
+#output
+st_folium(m, width=700, height=500)
