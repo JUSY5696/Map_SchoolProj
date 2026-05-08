@@ -39,4 +39,4 @@ folium.Marker(
 ).add_to(m)
 
 #output
-st_folium(m, width=700, height=500)
+st_folium(m, width=1000, height=500)
