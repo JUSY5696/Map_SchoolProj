@@ -31,10 +31,9 @@ m = folium.Map(
     zoom_start = 12
   )
 for i in range(len(df)) :
-    homepage = f'{df.iloc[i]['홈페이지']}'
     folium.Marker(
         location = [df.iloc[i]['위도'], df.iloc[i]['경도']],
-        popup = f'<div style="width:300px"> <strong>{df.iloc[i]['위치명']}</strong> <br> HP : <a href="{homepage}">{homepage}</a> </div>',
+        popup = f'<div style="width:300px"> <strong>{df.iloc[i]['위치명']}</strong> </div>',
         icon = folium.Icon(color='blue', icon='info-sign')
     ).add_to(m)
 
