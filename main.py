@@ -22,7 +22,7 @@ st.code("* \n** \n*** \n**** \n*****")
 
 #read data(CSV)
 #df = pd.read_csv('인천광역시 남동구_고등학교_20240325.csv', encoding='cp949')
-df = pd.read_csv('등산경로.csv', encoding='cp949')
+df = pd.read_csv('등산경로.csv', encoding='utf-8')
 #st.map(df_latlon)
 
 #Maps with Marker(Map Visualization Step)
