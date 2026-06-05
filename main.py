@@ -21,7 +21,8 @@ st.code("for i in range(5) : \n  print('*' * (i + 1))")
 st.code("* \n** \n*** \n**** \n*****")
 
 #read data(CSV)
-df = pd.read_csv('인천광역시 남동구_고등학교_20240325.csv', encoding='cp949')
+#df = pd.read_csv('인천광역시 남동구_고등학교_20240325.csv', encoding='cp949')
+df = pd.read_csv('등산경로.csv', encoding='cp949')
 #st.map(df_latlon)
 
 #Maps with Marker(Map Visualization Step)
@@ -33,7 +34,7 @@ for i in range(len(df)) :
     homepage = f'{df.iloc[i]['홈페이지']}'
     folium.Marker(
         location = [df.iloc[i]['위도'], df.iloc[i]['경도']],
-        popup = f'<div style="width:300px"> <strong>{df.iloc[i]['학교명']}</strong> <br> HP : <a href="{homepage}">{homepage}</a> <br> TEL : {df.iloc[i]['연락처']}</div>',
+        popup = f'<div style="width:300px"> <strong>{df.iloc[i]['위치명']}</strong> <br> HP : <a href="{homepage}">{homepage}</a> </div>',
         icon = folium.Icon(color='blue', icon='info-sign')
     ).add_to(m)
 
