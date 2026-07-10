@@ -38,4 +38,13 @@ for i in range(len(df)) :
     ).add_to(m)
 
 #output
-st_folium(m, width=1000, height=500)
+col1, col2 = st.columns([3,1])
+
+with col1 :
+    st_folium(m, width=1000, height=500)
+
+with col2 :
+    st.subheader("정보")
+    st.info("길이 미끄럽습니다. 주의하세요.")
+    st.metric(label="소요시간", value="10분")
+    st.write("주의사항 : 등산화를 착용하세요.")
