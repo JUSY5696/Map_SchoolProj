@@ -28,7 +28,7 @@ df = pd.read_csv('등산경로.csv', encoding='utf-8')
 #Maps with Marker(Map Visualization Step)
 m = folium.Map(
     location = [37.40583317, 126.7214872],
-    zoom_start = 25
+    zoom_start = 20
   )
 for i in range(len(df)) :
     folium.Marker(
@@ -41,7 +41,7 @@ for i in range(len(df)) :
 col1, col2 = st.columns([3,1])
 
 with col1 :
-    st_folium(m, width=2560, height=1080)
+    st_folium(m, width=1920, height=600)
 
 with col2 :
     st.subheader("정보")
