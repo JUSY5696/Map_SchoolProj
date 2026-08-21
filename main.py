@@ -64,7 +64,7 @@ selected_course = st.sidebar.selectbox("가고 싶은 코스를 선택하세요"
 
 #Maps with Marker(Map Visualization Step)
 m = folium.Map(
-    location = [37.407769, 126.719056],
+    location = [37.407569, 126.716964],
     zoom_start = 16
   )
 
@@ -124,7 +124,12 @@ with col1 :
     st_folium(m, width=1920, height=600)
 
 with col2 :
-    st.subheader("정보")
+    st.subheader("코스 상세 안내")
+    if selected_course != "전체 코스 보기" :
+        c_key = selected_course + '코스'
+        info = course_info.get(c_key, {})
+        st.markdown(f"### **{selected_course} 코스**")
+        
     st.info("길이 미끄럽습니다. 주의하세요.")
     st.metric(label="소요시간", value="10분")
     st.write("주의사항 : 등산화를 착용하세요.")
