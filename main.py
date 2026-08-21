@@ -163,7 +163,7 @@ with col2 :
     else:
         st.info("왼쪽 사이드바에서 특정 코스(A~E)를 선택하면 예상 소요시간, 주의사항 및 포인트별 사진을 상세히 보실 수 있습니다.")
         
-        st.markdown("###전체 코스 개요")
+        st.markdown("### 전체 코스 개요")
         for k, v in course_info.items():
             st.markdown(f"- **{k}**: {v['desc']} *(소요시간: {v['time']})*")
             
