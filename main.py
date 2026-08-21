@@ -64,7 +64,7 @@ selected_course = st.sidebar.selectbox("가고 싶은 코스를 선택하세요"
 
 #Maps with Marker(Map Visualization Step)
 m = folium.Map(
-    location = [37.407569, 126.750000],
+    location = [37.407569, 126.735000],
     zoom_start = 16
   )
 
