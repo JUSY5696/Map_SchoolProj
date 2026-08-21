@@ -28,7 +28,7 @@ m = folium.Map(
 
 for i in range(len(df)) :
     folium.Marker(
-        location = [df_latlon.iloc[i]['위도'], df.iloc[i]['경도']],
+        location = [df_latlon.iloc[i]['lat'], df.iloc[i]['lon']],
         popup = f'<div style="width:300px"> <strong>{df.iloc[i]['위치명']}</strong> </div>',
         icon = folium.Icon(color='blue', icon='info-sign')
     ).add_to(m)
