@@ -14,7 +14,7 @@ st.markdown("## 2026 NDHS Hiking Event Guide Map")
 df = pd.read_csv('등산경로.csv', encoding='utf-8')
 df['이미지'] = 'images/' + df['코스'] + df['위치명'] + '.jpg'
 
-df_latlon = df[['위도'],['경도']]
+df_latlon = df[['위도','경도']]
 #코스의 위치에 해당하는 이미지 이름
 df_latlon = df_latlon.rename(columns={'위도' : 'lat', '경도' : 'lon'})
 
