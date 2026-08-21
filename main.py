@@ -9,20 +9,15 @@ st.set_page_config(page_title="NDHS Maps", layout="wide")
 st.title("NDHS Maps")
 st.markdown("## 2026 NDHS Hiking Event Guide Map")
 
-st.markdown("# big title")
-st.markdown("## small title")
-st.markdown("**Bold**")
-st.markdown("*Italic*")
-
-st.header("Header")
-st.subheader("Subheader")
-st.caption("Caption")
-st.code("for i in range(5) : \n  print('*' * (i + 1))")
-st.code("* \n** \n*** \n**** \n*****")
-
 #read data(CSV)
 #df = pd.read_csv('인천광역시 남동구_고등학교_20240325.csv', encoding='cp949')
 df = pd.read_csv('등산경로.csv', encoding='utf-8')
+df['이미지'] = 'images/' + df['코스'] + df['위치명'] + '.jpg'
+
+df_latlon = df[['위도'],['경도']]
+#코스의 위치에 해당하는 이미지 이름
+df_latlon = df_latlon.rename(columns={'위도' : 'lat', '경도' : 'lon'})
+
 #st.map(df_latlon)
 
 #Maps with Marker(Map Visualization Step)
@@ -30,9 +25,10 @@ m = folium.Map(
     location = [37.407769, 126.719056],
     zoom_start = 17
   )
+
 for i in range(len(df)) :
     folium.Marker(
-        location = [df.iloc[i]['위도'], df.iloc[i]['경도']],
+        location = [df_latlon.iloc[i]['위도'], df.iloc[i]['경도']],
         popup = f'<div style="width:300px"> <strong>{df.iloc[i]['위치명']}</strong> </div>',
         icon = folium.Icon(color='blue', icon='info-sign')
     ).add_to(m)
