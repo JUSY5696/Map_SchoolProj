@@ -7,18 +7,66 @@ import pandas as pd
 st.set_page_config(page_title="NDHS Maps", layout="wide")
 
 st.title("NDHS Maps")
-st.markdown("## 2026 NDHS Hiking Event Guide Map")
+st.markdown("## 2026 NDHS 등산 축제 가이드 맵")
 
 #read data(CSV)
-#df = pd.read_csv('인천광역시 남동구_고등학교_20240325.csv', encoding='cp949')
 df = pd.read_csv('등산경로.csv', encoding='utf-8')
 df['이미지'] = 'images/' + df['코스'] + df['위치명'] + '.jpg'
 
 df_latlon = df[['위도','경도']]
-#코스의 위치에 해당하는 이미지 이름
+#manipulating image file path
 df_latlon = df_latlon.rename(columns={'위도' : 'lat', '경도' : 'lon'})
 
-#st.map(df_latlon)
+course_info = {
+    "A코스": {
+        "color": "blue",
+        "time": "4~5분",
+        "desc": "학교 출발",
+        "notice": "경사가 완만하여 초보자에게 추천합니다.",
+        "caution": "편안한 운동화를 착용하세요."
+    },
+    "B코스": {
+        "color": "green",
+        "time": "8~9분",
+        "desc": "가온어린이공원 경유",
+        "notice": "탁 트인 조망과 아름다운 자연 경관을 즐길 수 있습니다.",
+        "caution": "낙엽 및 미끄럼 주의, 등산화 권장."
+    },
+    "C코스": {
+        "color": "orange",
+        "time": "10~11분",
+        "desc": "서해랑길 94코스 출발",
+        "notice": "접근성이 뛰어난 완주 코스입니다.",
+        "caution": "수분 보충을 위해 물을 챙기세요."
+    },
+    "D코스": {
+        "color": "red",
+        "time": "13~14분",
+        "desc": "세븐일레븐 코스",
+        "notice": "편의점이 있어 간식 및 음료 구매가 편리합니다.",
+        "caution": "쓰레기는 반드시 되가지고 내려오세요."
+    },
+    "E코스": {
+        "color": "purple",
+        "time": "12~13분",
+        "desc": "논현주공1단지 코스",
+        "notice": "입구를 잘 찾아가야하는 코스입니다.",
+        "caution": "벌레에 물리지 않도록 벌레기피제 사용을 권장합니다."
+    }
+}
+
+#Side bar - course selection
+st.sidebar.header("코스 선택")
+unique_courses = list(df['코스'].unique()) if '코스' in df.columns else []
+course_options = ["전체 코스 보기"] + unique_courses
+
+selected_course = st.sidebar.selectbox("가고 싶은 코스를 선택하세요", course_options)
+
+# 선택한 코스에 맞게 데이터 필터링
+if selected_course == "전체 코스 보기":
+    filtered_df = df.copy()
+else:
+    filtered_df = df[df['코스'] == selected_course].copy()
 
 #Maps with Marker(Map Visualization Step)
 m = folium.Map(
